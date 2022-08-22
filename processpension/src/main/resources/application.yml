@@ -1,0 +1,44 @@
+server:
+  port: 9002
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 160000000
+        readTimeout: 160000000
+logging:
+  level:
+    org.springframework.web: DEBUG
+    enableLoggingRequestDetails: false
+spring:
+  application:
+    name: process-pension
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: true
+    allowed:
+      resources: /h2-console/**
+    security:
+      basic:
+        enabled: true
+        authorize-mode: NONE
+  datasource:
+    url: jdbc:h2:mem:pms
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    jpa:
+      hibernate:
+        ddl-auto: create
+      database-platform: org.hibernate.dialect.H2Dialect
+      show-sql: true
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#    fetch-registry: true
+#    register-with-eureka: true
