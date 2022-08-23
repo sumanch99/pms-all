@@ -1,0 +1,10 @@
+version: 1.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-south-1:176275544602:task-definition/cts-pms-gpd-new-td:1"
+        LoadBalancerInfo:
+          ContainerName: "cts-pms-gpd-new-container"
+          ContainerPort: "9001"
+        PlatformVersion: "LATEST"

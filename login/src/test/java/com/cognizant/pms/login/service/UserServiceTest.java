@@ -41,6 +41,18 @@ public class UserServiceTest {
 		userService.createNewAccount(request);
 	}
 	
+	@Test(expected = LoginException.class)
+	public void createEmptyNewAccountTest() throws LoginException {
+		AuthenticationRequest request = new AuthenticationRequest("","");
+		userService.createNewAccount(request);
+	}
+	
+	@Test(expected = LoginException.class)
+	public void createNullNewAccountTest() throws LoginException {
+		AuthenticationRequest request = new AuthenticationRequest(null,null);
+		userService.createNewAccount(request);
+	}
+	
 	@Test
 	public void createNewAccountTest() throws LoginException {
 		AuthenticationRequest request = new AuthenticationRequest("suman","1234");
